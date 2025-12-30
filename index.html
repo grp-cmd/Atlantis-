@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATLANTIS GLOBAL | AI Command Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@300;600&display=swap');
+        
+        body { background-color: #020617; color: #f8fafc; font-family: 'Inter', sans-serif; }
+        .font-tech { font-family: 'Orbitron', sans-serif; }
+        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(56, 189, 248, 0.1); }
+        .neon-glow { box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); border: 1px solid #38bdf8; }
+        #map { height: 300px; width: 100%; border-radius: 15px; filter: grayscale(1) invert(1) opacity(0.5); }
+        .hero-gradient { background: radial-gradient(circle at top right, #075985 0%, #020617 60%); }
+    </style>
+</head>
+<body class="hero-gradient min-h-screen">
+
+    <nav class="sticky top-0 z-50 glass border-b border-white/5 p-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="font-tech text-xl font-black tracking-tighter text-sky-400">ATLANTIS</div>
+            <div class="hidden md:flex space-x-8 text-[10px] uppercase tracking-widest font-bold">
+                <a href="#home" class="hover:text-sky-400 transition">Overview</a>
+                <a href="#services" class="hover:text-sky-400 transition">Solutions</a>
+                <a href="#network" class="hover:text-sky-400 transition">Network</a>
+            </div>
+            <a href="#ai-agent" class="neon-glow bg-sky-500/10 text-sky-400 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                AI Agent Status: Active
+            </a>
+        </div>
+    </nav>
+
+    <section id="home" class="pt-20 pb-16 px-6 text-center max-w-5xl mx-auto">
+        <h1 class="font-tech text-4xl md:text-7xl font-black mb-6 leading-tight uppercase">
+            The Sovereign <br> <span class="text-sky-400 italic">Maritime Engine</span>
+        </h1>
+        <p class="text-slate-400 text-sm md:text-lg max-w-2xl mx-auto leading-relaxed mb-10">
+            Atlantis Global leverages open-source neural networks to automate global logistics. We eliminate middlemen and provide pure cargo sovereignty for elite traders.
+        </p>
+        <div class="flex flex-col md:flex-row justify-center gap-4">
+            <a href="#ai-agent" class="bg-sky-500 hover:bg-sky-400 text-slate-900 px-8 py-4 rounded-xl font-black uppercase text-sm transition shadow-xl shadow-sky-500/20">
+                Launch AI Agent
+            </a>
+            <a href="#services" class="glass px-8 py-4 rounded-xl font-bold text-sm hover:bg-white/5 transition border border-white/10">
+                Explore Services
+            </a>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 px-6 bg-[#010409]/50">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass p-8 rounded-3xl">
+                <div class="text-sky-500 mb-4 font-tech tracking-tighter">01. LOGISTICS</div>
+                <h3 class="text-xl font-bold mb-2">Ocean Freight</h3>
+                <p class="text-slate-500 text-sm">Autonomous routing and container management across all major ports.</p>
+            </div>
+            <div class="glass p-8 rounded-3xl">
+                <div class="text-sky-500 mb-4 font-tech tracking-tighter">02. COMPLIANCE</div>
+                <h3 class="text-xl font-bold mb-2">AI Customs</h3>
+                <p class="text-slate-500 text-sm">Instant document auditing using open-source vision models.</p>
+            </div>
+            <div class="glass p-8 rounded-3xl">
+                <div class="text-sky-500 mb-4 font-tech tracking-tighter">03. TRACKING</div>
+                <h3 class="text-xl font-bold mb-2">Fleet Monitor</h3>
+                <p class="text-slate-500 text-sm">Real-time satellite data for global cargo transparency.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="ai-agent" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto neon-border bg-slate-900/40 border border-sky-500/30 rounded-[2rem] p-8 md:p-12">
+            <div class="text-center mb-12">
+                <span class="text-[10px] bg-sky-500/20 text-sky-400 px-3 py-1 rounded-full font-bold uppercase tracking-widest">Command Center</span>
+                <h2 class="font-tech text-3xl font-black mt-4">ATLANTIS AI AGENT</h2>
+                <p class="text-slate-400 text-xs mt-2 italic">Processing global shipping documents in real-time</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass p-6 rounded-2xl border-dashed border-2 border-sky-900/50 hover:bg-sky-500/5 transition cursor-pointer text-center">
+                    <svg class="w-8 h-8 mx-auto text-sky-500 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                    <p class="text-[10px] font-bold uppercase">Audit Invoice / BL</p>
+                </div>
+                <div class="glass p-6 rounded-2xl border-white/5">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="p-10 text-center border-t border-white/5">
+        <p class="text-[10px] text-slate-600 uppercase tracking-[0.5em]">Atlantis Global | No Middlemen | Pure Sovereignty</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map', { zoomControl: false }).setView([20, 0], 2);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
+        L.circleMarker([24.45, 54.37], { color: '#38bdf8', radius: 4 }).addTo(map);
+    </script>
+</body>
+</html>
